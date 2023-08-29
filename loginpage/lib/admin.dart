@@ -65,28 +65,3 @@ class _adminPageState extends State<adminPage> {
         ));
   }
 }
-
-
-/*return Center(
-        child: Padding(
-      padding: EdgeInsets.all(15.0),
-      child: Column(
-        children: [
-          TextField(
-            decoration:const  InputDecoration(hintText: "Enter Admin Username"),
-            controller: adminName,
-          ),
-          TextField(
-            decoration: const InputDecoration(hintText: "Enter Admin Password"),
-            controller: adminPassword,
-            obscureText: true,
-          ),
-          ElevatedButton(
-            child: const Text("Log In"),
-            onPressed: () {
-              loginAdmin();
-            },
-          )
-        ],
-      ),
-    ));*/
