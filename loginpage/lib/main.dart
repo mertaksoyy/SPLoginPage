@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loginpage/admin.dart';
 import 'package:loginpage/mainpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -63,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
       GlobalKey<ScaffoldState>(); //SnackBar kullanmak için key oluşturduk
 
   Future<void> login() async {
-    if (tfUserName.text == "Admin" && tfPassword.text == "12345") {
+    if (tfUserName.text == "User" && tfPassword.text == "12345") {
       var sp = await SharedPreferences.getInstance();
       sp.setString("username", tfUserName.text);
       sp.setString("password", tfPassword.text);
@@ -107,6 +108,13 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text("Log In"),
                   onPressed: () {
                     login(); //future fonksiyon
+                  },
+                ),
+                ElevatedButton(
+                  child: Text("Go To Admin Page"),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => adminPage()));
                   },
                 )
               ],
