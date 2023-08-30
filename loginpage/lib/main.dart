@@ -80,8 +80,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key:
-            scafkey, //snackbar ı ara yüzde göstermek için scaffoldun altına koyduk
         appBar: AppBar(
           title: const Text("Login Page"),
         ),
@@ -113,8 +111,10 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   child: Text("Go To Admin Page"),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => adminPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => adminLoginPage()));
                   },
                 )
               ],

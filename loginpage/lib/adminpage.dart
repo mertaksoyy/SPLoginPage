@@ -4,48 +4,48 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:loginpage/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
-
+class adminPage extends StatefulWidget {
+  const adminPage({super.key});
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<adminPage> createState() => _adminPageState();
 }
 
-class _MainPageState extends State<MainPage> {
-  //Kullanıcı için
-  var getUsername;
-  var getPassword;
+class _adminPageState extends State<adminPage> {
+  var adminUsername;
+  var adminPass;
 
-  Future<void> getUserValues() async {
+  //Admin verilerini aldığımız kısım
+  Future<void> getAdminValues() async {
     var sp = await SharedPreferences.getInstance();
 
     setState(() {
-      getUsername = sp.getString("username") ?? "Username Not Found";
-      getPassword = sp.getString("password") ?? "Password Not Found";
+      adminUsername = sp.getString("admin") ?? "Username Not Found";
+      adminPass = sp.getString("adminPass") ?? "Password Not Found";
     });
   }
 
   //çıkış yaparsa tüm verileri backstackten silecek olan fonksiyon
   Future<void> logOut() async {
     var sp = await SharedPreferences.getInstance();
-    sp.remove("username");
-    sp.remove("password");
+    sp.remove("admin");
+    sp.remove("adminPass");
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
-// --MainPage sayfası açıldığı anda initState ile
-//--getValues Fonksiyonu çalışacak. -->initState sayfa açıldığında direk çalıştırır
+// --AdminPage sayfası açıldığı anda initState ile
+//--getAdminValues Fonksiyonu çalışacak. -->initState sayfa açıldığında direk çalıştırır
   @override
   void initState() {
     super.initState();
-    getUserValues();
+    getAdminValues();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Main Page"),
+          title: Text("Admin Page"),
           actions: [
             IconButton(
               icon: Icon(Icons.exit_to_app),
@@ -62,11 +62,11 @@ class _MainPageState extends State<MainPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "User Name : $getUsername ",
+                  "Admin User Name : $adminUsername",
                   style: TextStyle(fontSize: 25.0),
                 ),
                 Text(
-                  "Password: $getPassword",
+                  "Password: $adminPass",
                   style: TextStyle(fontSize: 25.0),
                 )
               ],

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:loginpage/adminpage.dart';
 import 'package:loginpage/mainpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class adminPage extends StatefulWidget {
-  const adminPage({super.key});
+class adminLoginPage extends StatefulWidget {
+  const adminLoginPage({super.key});
   @override
-  State<adminPage> createState() => _adminPageState();
+  State<adminLoginPage> createState() => _adminLoginPageState();
 }
 
-class _adminPageState extends State<adminPage> {
+class _adminLoginPageState extends State<adminLoginPage> {
   var adminName = TextEditingController();
   var adminPassword = TextEditingController();
 
@@ -20,7 +21,7 @@ class _adminPageState extends State<adminPage> {
       sp.setString("admin", adminName.text);
       sp.setString("adminPass", adminPassword.text);
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => MainPage()));
+          context, MaterialPageRoute(builder: (context) => adminPage()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Incorrect Information for Admin "),
