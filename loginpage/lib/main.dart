@@ -93,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: tfUserName,
                   decoration: InputDecoration(
                     hintText: "Enter User Name",
+                    border: OutlineInputBorder(),
                   ),
                 ),
                 TextField(
